@@ -6,7 +6,7 @@
 /*   By: marius <marius@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 12:17:52 by marius            #+#    #+#             */
-/*   Updated: 2022/04/11 12:38:39 by marius           ###   ########.fr       */
+/*   Updated: 2022/04/06 10:11:18 by marius           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
-# include <stdio.h>
 
 # define BUFF_SIZE 4096
 # define ALLOC_SIZE 60
@@ -63,5 +62,6 @@ void	add_to_buff(char c, t_print *tab);
 void	add_str_to_buff(char *str, t_print *tab);
 int		is_inf(long double d);
 int		is_nan(long double d);
+char	*create_print_adress(const char *str, t_print *tab);
 
 #endif

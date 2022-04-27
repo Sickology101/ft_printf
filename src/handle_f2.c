@@ -6,7 +6,7 @@
 /*   By: marius <marius@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 10:41:46 by marius            #+#    #+#             */
-/*   Updated: 2022/04/11 12:31:08 by marius           ###   ########.fr       */
+/*   Updated: 2022/04/05 16:04:55 by marius           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,8 @@ static void	add_to_char_arr(char **num, t_print *tab)
 	{
 		if (g_calc_num[g_index1] > 9)
 			(*num)[g_index2++] = g_calc_num[g_index1++] / 10 + '0';
-		(*num)[g_index2++] = g_calc_num[g_index1++] + '0';
+		(*num)[g_index2++] = g_calc_num[g_index1++] % 10 + '0';
 	}
-	
 	if (tab->prec || (!tab->prec && tab->flags[4] == '#'))
 		(*num)[g_index2++] = '.';
 	while (g_index1 - g_dot < tab->prec)

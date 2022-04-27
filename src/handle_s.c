@@ -6,7 +6,7 @@
 /*   By: marius <marius@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:48:00 by marius            #+#    #+#             */
-/*   Updated: 2022/04/19 10:14:33 by marius           ###   ########.fr       */
+/*   Updated: 2022/04/05 15:38:40 by marius           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static void	minflag(char *str, t_print *tab)
 	if (tab->prec == 0)
 		return ;
 	else if (tab->prec > 0)
-		{
-			a = ft_strnlen(str, tab->prec);
-			while (index < tab->prec && str[index] != '\0')
-				add_to_buff(str[index++],tab);
-		}
+	{
+		a = ft_strnlen(str, tab->prec);
+		while (index < tab->prec && str[index] != '\0')
+			add_to_buff(str[index++], tab);
+	}
 	else
 	{
 		a = ft_strlen(str);
@@ -45,7 +45,7 @@ static void	noflag(char *s, t_print *tab)
 	int	a;
 
 	if (tab->prec >= 0)
-			a = ft_strnlen(s, tab->prec);
+		a = ft_strnlen(s, tab->prec);
 	else
 		a = ft_strlen(s);
 	index = tab->width - a;
@@ -57,7 +57,11 @@ static void	noflag(char *s, t_print *tab)
 	index = 0;
 	while (index != a)
 	{
-		add_to_buff(s[index++],tab);
+		if (tab->prec == 0)
+			add_to_buff(' ', tab);
+		else
+			add_to_buff(s[index], tab);
+		index++;
 	}
 }
 

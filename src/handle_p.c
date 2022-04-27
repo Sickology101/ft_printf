@@ -6,7 +6,7 @@
 /*   By: marius <marius@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 12:45:00 by marius            #+#    #+#             */
-/*   Updated: 2022/04/11 11:18:24 by marius           ###   ########.fr       */
+/*   Updated: 2022/04/05 15:10:28 by marius           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ static char	*address_hex(unsigned long long p, t_print *tab)
 	char	*str;
 	char	*dest;
 
-	dest = ft_strnew(16);
 	str = ft_strnew(12);
-	if (!str && !dest)
+	if (!str)
 	{
 		return (0);
 	}
@@ -66,9 +65,7 @@ static char	*address_hex(unsigned long long p, t_print *tab)
 	}
 	else
 		str = hex_to_alph(str, p);
-	ft_strcpy(dest, "0x");
-	if (tab->prec != 0)
-		ft_strcpy(&dest[2], str);
+	dest = create_print_adress(str, tab);
 	ft_strdel(&str);
 	return (dest);
 }

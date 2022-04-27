@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_c.c                                         :+:      :+:    :+:   */
+/*   handle_s.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marius <marius@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 09:36:25 by marius            #+#    #+#             */
-/*   Updated: 2022/04/05 15:58:53 by marius           ###   ########.fr       */
+/*   Created: 2022/03/30 14:48:00 by marius            #+#    #+#             */
+/*   Updated: 2022/04/05 15:38:40 by marius           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	actions(char c, t_print *tab)
+char	*create_print_adress(const char *str, t_print *tab)
 {
-	size_t	index;
+	int		len;
+	char	*dest;
+	int		index;
+	int		prec;
 
-	if (tab->flags[3] == '-')
-	{
-		add_to_buff(c, tab);
-		index = 1;
-		while (index++ < tab->width)
-		{
-			add_to_buff(' ', tab);
-		}
-	}
+	len = 16 + tab->prec;
+	dest = ft_strnew(len);
+	if (!dest)
+		return (0);
+	ft_strcpy(dest, "0x");
+	len = ft_strlen(str);
+	if (tab->prec > len)
+		prec = tab->prec - len;
 	else
+		prec = 0;
+	index = 2;
+	while (prec-- != 0)
 	{
-		index = 0;
-		while (index++ < tab->width - 1)
-		{
-			add_to_buff(' ', tab);
-		}
-		add_to_buff(c, tab);
+		dest[index++] = '0';
 	}
-}
-
-void	handle_c(t_print *tab)
-{
-	char	c;
-
-	c = (char)va_arg(tab->args, int);
-	if (tab->width > 1)
-		actions(c, tab);
-	else
-		add_to_buff(c, tab);
+	if (tab->prec != 0)
+		ft_strcpy(&dest[index], str);
+	return (dest);
 }

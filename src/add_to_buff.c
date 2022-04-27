@@ -26,7 +26,10 @@ void	add_str_to_buff(char *str, t_print *tab)
 
 void	add_to_buff(char c, t_print *tab)
 {
-	tab->buff[tab->printed++] = c;
+	if (c == 0)
+		tab->ret++;
+	else
+		tab->buff[tab->printed++] = c;
 	if (!(tab->index % BUFF_SIZE))
 	{
 		ft_putstr(tab->buff);

@@ -19,7 +19,7 @@ OBJ_D		=	.obj/
 LIB			=	libft/
 LIB_N		=	libft.a
 
-SRC			=	ft_printf add_to_buff create_tab handle_c handle_d_i handle_f handle_f2 handle_o handle_o2 handle_p handle_proc handle_s handle_u handle_x handle_x2 ulong_init
+SRC			=	ft_printf add_to_buff create_tab handle_c handle_d_i handle_f handle_f2 handle_o handle_o2 handle_p handle_proc handle_s handle_u handle_x handle_x2 ulong_init handle_p2
 SRCS		=	$(addprefix $(SRC_D), $(addsuffix .c, $(SRC)))
 OBJ			=	$(addprefix $(OBJ_D), $(SRCS:%.c=%.o))
 INCLUDE		=	-I includes/ -I $(LIB)

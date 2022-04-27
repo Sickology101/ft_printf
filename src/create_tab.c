@@ -6,7 +6,7 @@
 /*   By: marius <marius@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:47 by marius            #+#    #+#             */
-/*   Updated: 2022/04/11 12:43:52 by marius           ###   ########.fr       */
+/*   Updated: 2022/04/05 15:46:58 by marius           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	add_flags(const char *format, t_print *tab)
 void	add_width(const char *format, t_print *tab)
 {
 	int	val;
-	
+
 	tab->width = ft_atoi(&(format[tab->index]));
 	if (tab->width)
 		while ('0' <= format[tab->index] && format[tab->index] <= '9')
 			tab->index++;
 	else if (format[tab->index] == '*')
 	{
-		val  = va_arg(tab->args, int);
+		val = va_arg(tab->args, int);
 		if (val < 0)
 		{
 			tab->width = -val;
